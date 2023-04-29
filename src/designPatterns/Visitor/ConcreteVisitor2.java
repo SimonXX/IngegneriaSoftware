@@ -1,6 +1,8 @@
 package designPatterns.Visitor;
 
 public class ConcreteVisitor2 implements Visitor{
+
+    //Ogni visitor concreto definisce un'operazione per ogni elemento concreto della struttura
     @Override
     public void visitElementA(ElementA elementA) {
         System.out.println("ConcreteVisitor2 visited ElementA");
