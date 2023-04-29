@@ -6,6 +6,8 @@ import TexDocExample.is.textdoc.SubSection;
 import TexDocExample.is.textdoc.TextDocument;
 
 public interface TextDocumentVisitor {
+
+	//per ogni classe concreta della nostra struttura, aggiungiamo un metodo
 	void visit(TextDocument d);
 
 	void visit(Section s);
