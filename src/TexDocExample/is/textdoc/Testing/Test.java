@@ -1,4 +1,4 @@
-package TexDocExample.is.textdoc;
+package TexDocExample.is.textdoc.Testing;
 
 import TexDocExample.is.textdoc.TextDocument;
 import TexDocExample.is.textdoc.builder.TextDocumentBuilder;
@@ -6,7 +6,7 @@ import TexDocExample.is.textdoc.html.HTMLTextBuilder;
 import TexDocExample.is.textdoc.json.JsonTextBuilder;
 import TexDocExample.is.textdoc.latex.LaTeXTextBuilder;
 import TexDocExample.is.textdoc.parser.TextDocumetParser;
-import TexDocExample.is.textdoc.NativeTextVisitor;
+import TexDocExample.is.textdoc.visitor.NativeTextVisitor;
 import TexDocExample.is.textdoc.txt.PlainTextVisitor;
 import TexDocExample.is.textdoc.visitor.DirectorVisitor;
 import TexDocExample.is.textdoc.visitor.RemoveSubSectionVisitor;

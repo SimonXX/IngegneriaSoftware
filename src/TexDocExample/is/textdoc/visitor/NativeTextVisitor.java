@@ -1,10 +1,12 @@
-package TexDocExample.is.textdoc;
+package TexDocExample.is.textdoc.visitor;
 
+import TexDocExample.is.textdoc.*;
 import TexDocExample.is.textdoc.visitor.TextDocumentVisitor;
 
 import java.io.PrintStream;
 import java.io.PrintWriter;
 
+//se si ha il documento in memoria lui lo salva
 public class NativeTextVisitor implements TextDocumentVisitor {
 
 	private PrintWriter pw;
