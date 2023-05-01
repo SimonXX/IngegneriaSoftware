@@ -1,6 +1,5 @@
 package designPatterns.Observer.ObserverMoreSubjects;
 
-import designPatterns.Observer.ChangeManager.ConcreteSubject;
 
 public class ConcreteObserver implements Observer{
     private String name;
@@ -9,7 +8,7 @@ public class ConcreteObserver implements Observer{
         this.name = name;
     }
 
-    public void update(ConcreteSubject subject) {
+    public void update(Subject subject) {
         if (subject instanceof ConcreteSubject1) {
             System.out.println(name + " has received an update from ConcreteSubject1: " + ((ConcreteSubject1) subject).getState());
         } else if (subject instanceof ConcreteSubject2) {
