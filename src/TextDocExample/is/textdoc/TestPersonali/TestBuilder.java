@@ -1,4 +1,4 @@
-package TextDocExample;
+package TextDocExample.is.textdoc.TestPersonali;
 
 import TexDocExample.is.textdoc_old.TextDocument;
 import TexDocExample.is.textdoc_old.builder.DocumentBuilder;

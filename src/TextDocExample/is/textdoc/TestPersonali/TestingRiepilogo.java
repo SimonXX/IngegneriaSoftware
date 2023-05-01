@@ -1,4 +1,4 @@
-package TextDocExample;
+package TextDocExample.is.textdoc.TestPersonali;
 
 import TexDocExample.is.textdoc_old.parser.TextDocumetParser;
 import TextDocExample.is.textdoc.TextDocument;
@@ -67,12 +67,14 @@ public class TestingRiepilogo {
         visitor = new DirectorVisitor(new HTMLTextBuilder(pw3));//passiamo dalla rappresentazione in memoria alla rappresentazione in html direttamente
         doc.accept(visitor);
 
-        //SFRUTTIAMO DIRETTAMENTE IL BUILDER DIRETTO DAL VISITOR PER SALVARE IN MEMORIA SECONDARIA
+        //SFRUTTIAMO DIRETTAMENTE IL BUILDER DIRETTO DAL VISITORPER SALVARE IN MEMORIA SECONDARIA
 
-        //SI NOTI CHE PRIMA FACEVAMO
+
+
+        //SI NOTI CHE PRIMA FACEVAMO (Non usiamo più TextDocumentParser come direttore dei lavori in quanto esso conosce la rappresentazione nativa in memoria secondaria)
 
         //DocumentBuilder builder = new HTMLTextBuilder(pw);
-       //TextDocumetParser tp = new TextDocumetParser(builder, new File(args[0]).toURI().toURL().toString());
+       //TextDocumetParser tp = new TextDocumetParser(builder, new File(args[0]).toURI().toURL().toString()); -> ha bisogno della rappresentazione in memoria secondaria
         //tp.build();  -> il parser si occupava della stampa durante la costruzione
 
     }
