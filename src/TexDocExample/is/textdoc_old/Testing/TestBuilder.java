@@ -11,7 +11,7 @@ import TexDocExample.is.textdoc_old.parser.TextDocumetParser;
 import java.io.File;
 import java.io.PrintWriter;
 
-public class Test2 {
+public class TestBuilder {
 
     public static void main(String[] args) throws Exception {
 
@@ -26,9 +26,12 @@ public class Test2 {
         TextDocumetParser tp = new TextDocumetParser(builder, new File(args[0]).toURI().toURL().toString());
         tp.build(); //nel file output.html stiamo scrivendo il documento in HTML
 
+        //NON STIAMO ANCORA SFRUTTUANDO IL PATTERN COMPOSITE -> ci stiamo limitando a prendere un documento in memoria secondaria e stamparlo (che sia a console o su un file di testo)
+        //non stiamo usando la classe TextDocumentBuilder
+
 
         //CONVERSIONE IN LATEX
-        f = new File("output.tex");
+        f = new File("output.tex"); //il salvataggio lo realizzeremo in maniera più pulita con il visitor
 
         pw = new PrintWriter(f);
 
@@ -53,9 +56,9 @@ public class Test2 {
 
         //ricostruisce l'oggetto TextDocument
 
+        //QUI SFRUTTIAMO IL PATTERN COMPOSITE
+        //STIAMO USANDO TextDocumentBuilder che ci offre rappresentazione in memoria centrale
         TextDocumentBuilder builder2 = new TextDocumentBuilder();
-        tp = new TextDocumetParser(builder2, new File(args[0]).toURI().toURL().toString());
-        tp.build();
         TextDocument doc = builder2.getDocument();
 
 

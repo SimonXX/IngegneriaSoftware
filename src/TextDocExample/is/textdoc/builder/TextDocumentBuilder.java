@@ -51,7 +51,7 @@ public class TextDocumentBuilder implements DocumentBuilder {
 	public void openSection(String title) {
 
 		Section section = new Section(title);
-		stack.peek().addChild(section);
+		stack.peek().addChild(section);//aggiungiamo la sezione come figlia del documento
 		stack.push(section);
 
 	}

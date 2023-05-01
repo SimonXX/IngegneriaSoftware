@@ -9,7 +9,7 @@ import TextDocExample.is.textdoc.TextDocument;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class RemoveSubSectionVisitor implements TextDocumentVisitor {
+public class RemoveSubSectionVisitor implements TextDocumentVisitor {//rimuove le sotto sezioni
 	private LinkedList<DocumentElement> list = new LinkedList<>();
 
 	@Override

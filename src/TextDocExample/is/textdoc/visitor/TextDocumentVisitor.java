@@ -5,7 +5,7 @@ import TextDocExample.is.textdoc.Section;
 import TextDocExample.is.textdoc.SubSection;
 import TextDocExample.is.textdoc.TextDocument;
 
-public interface TextDocumentVisitor {
+public interface TextDocumentVisitor {//implementa un'operazione di visita per ogni elemento concreto del documento
 	void visit(TextDocument d);
 
 	void visit(Section s);

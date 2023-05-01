@@ -29,7 +29,6 @@ public final class TextDocument extends AbstractCompositeDocumentElement {
 	@Override
 	public void accept(TextDocumentVisitor visitor) {
 		visitor.visit(this);
-
 	}
 
 	

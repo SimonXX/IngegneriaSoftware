@@ -6,7 +6,7 @@ import TextDocExample.is.textdoc.visitor.TextDocumentVisitor;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 
-public class NativeTextVisitor implements TextDocumentVisitor {
+public class NativeTextVisitor implements TextDocumentVisitor {//salva il documento
 
 	private final PrintWriter pw;
 

@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 
 import TextDocExample.is.textdoc.builder.DocumentBuilder;
 
-public class TextDocumentParser {
+public class TextDocumentParser {//legge dal disco
 
 	private final String urlstring;
 

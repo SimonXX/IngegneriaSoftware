@@ -1,3 +1,8 @@
+package TextDocExample;
+
+import TexDocExample.is.textdoc_old.TextDocument;
+import TexDocExample.is.textdoc_old.builder.TextDocumentBuilder;
+import TexDocExample.is.textdoc_old.parser.TextDocumetParser;
 import TextDocExample.is.textdoc.builder.DocumentBuilder;
 import TextDocExample.is.textdoc.builder.NativeBuilder;
 import TextDocExample.is.textdoc.html.HTMLTextBuilder;
@@ -26,6 +31,13 @@ public class SimpleBuilderTest {
 
 		TextDocumentParser tp = new TextDocumentParser(builder, new File(args[0]).toURI().toURL().toString());
 		tp.build();
+
+		//PER MODIFICARE LA RAPPRESENTAZIONE IN MEMORIA è SUFFICIENTE CAMBIARE IL BUILDER (personal)
+		TextDocumentBuilder builder2 = new TextDocumentBuilder(); //vogliamo poter usare il metodo builder2.getDocument();
+		TextDocumetParser tp2= new TextDocumetParser(builder2, new File(args[0]).toURI().toURL().toString());
+		tp2.build();
+		TextDocument doc2 = builder2.getDocument();
+		PrintWriter pw2 = new PrintWriter(System.out);
 
 	}
 }

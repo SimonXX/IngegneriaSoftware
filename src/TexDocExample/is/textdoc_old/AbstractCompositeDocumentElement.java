@@ -52,7 +52,7 @@ public abstract class AbstractCompositeDocumentElement extends
 				throw new NoSuchElementException();
 			// throw new UnsupportedOperationException();
 			it.remove();
-			last.setParent(null);
+			last.setParent(null);//GESTIAMO QUI LA BIDIREZIONALITÀ
 			last = null;
 		}
 
