@@ -1,6 +1,5 @@
 package TextDocExample.is.textdoc.TestPersonali;
 
-import TexDocExample.is.textdoc_old.parser.TextDocumetParser;
 import TextDocExample.is.textdoc.TextDocument;
 import TextDocExample.is.textdoc.builder.DocumentBuilder;
 import TextDocExample.is.textdoc.builder.TextDocumentBuilder;
@@ -41,6 +40,7 @@ public class TestingRiepilogo {
 
 
         //SECONDA PARTE
+
         //adesso abbiamo sfruttato il pattern Composite aiutati dalla classe TextDocumetBuilder al fine di avere un documento struttura in memoria centrale
         PrintWriter pw2 = new PrintWriter("output testingRiepilogo");
 
@@ -51,6 +51,7 @@ public class TestingRiepilogo {
         TextDocument doc = builder2.getDocument();
 
         //TERZA PARTE
+
         //adesso usiamo il pattern visitor
         //rimuoviamo le sottosezioni
         TextDocumentVisitor visitor = new RemoveSubSectionVisitor();
@@ -67,9 +68,7 @@ public class TestingRiepilogo {
         visitor = new DirectorVisitor(new HTMLTextBuilder(pw3));//passiamo dalla rappresentazione in memoria alla rappresentazione in html direttamente
         doc.accept(visitor);
 
-        //SFRUTTIAMO DIRETTAMENTE IL BUILDER DIRETTO DAL VISITORPER SALVARE IN MEMORIA SECONDARIA
-
-
+        //SFRUTTIAMO DIRETTAMENTE IL BUILDER DIRETTO DAL VISITOR PER SALVARE IN MEMORIA SECONDARIA
 
         //SI NOTI CHE PRIMA FACEVAMO (Non usiamo più TextDocumentParser come direttore dei lavori in quanto esso conosce la rappresentazione nativa in memoria secondaria)
 

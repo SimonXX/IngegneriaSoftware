@@ -54,12 +54,7 @@ public class TestBuilder {
         tp.build();
 
 
-        //ricostruisce l'oggetto TextDocument
 
-        //QUI SFRUTTIAMO IL PATTERN COMPOSITE
-        //STIAMO USANDO TextDocumentBuilder che ci offre rappresentazione in memoria centrale
-        TextDocumentBuilder builder2 = new TextDocumentBuilder();
-        TextDocument doc = builder2.getDocument();
 
 
 
