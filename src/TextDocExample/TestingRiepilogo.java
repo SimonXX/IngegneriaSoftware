@@ -75,8 +75,5 @@ public class TestingRiepilogo {
        //TextDocumetParser tp = new TextDocumetParser(builder, new File(args[0]).toURI().toURL().toString());
         //tp.build();  -> il parser si occupava della stampa durante la costruzione
 
-
-
-
     }
 }
