@@ -1,10 +1,12 @@
 package TextDocExample;
 
+import TexDocExample.is.textdoc_old.parser.TextDocumetParser;
 import TextDocExample.is.textdoc.TextDocument;
 import TextDocExample.is.textdoc.builder.DocumentBuilder;
 import TextDocExample.is.textdoc.builder.TextDocumentBuilder;
 import TextDocExample.is.textdoc.html.HTMLTextBuilder;
 import TextDocExample.is.textdoc.parser.TextDocumentParser;
+import TextDocExample.is.textdoc.visitor.DirectorVisitor;
 import TextDocExample.is.textdoc.visitor.NativeTextVisitor;
 import TextDocExample.is.textdoc.visitor.RemoveSubSectionVisitor;
 import TextDocExample.is.textdoc.visitor.TextDocumentVisitor;
@@ -56,6 +58,23 @@ public class TestingRiepilogo {
         //vogliamo adesso stampare il nostro documento modificato in memoria centrale -> usiamo un altro visitor
         visitor = new NativeTextVisitor(pw2);
         doc.accept(visitor);
+
+        //QUARTA PARTE
+
+        //sempre usando il visitor vogliamo passare dalla rappresentazione in memoria principale, direttamente a quella in memoria secondaria -> sfruttando un builder qualsiasi
+        PrintWriter pw3 = new PrintWriter("output testingRiepilogo2");
+
+        visitor = new DirectorVisitor(new HTMLTextBuilder(pw3));//passiamo dalla rappresentazione in memoria alla rappresentazione in html direttamente
+        doc.accept(visitor);
+
+        //SFRUTTIAMO DIRETTAMENTE IL BUILDER DIRETTO DAL VISITOR PER SALVARE IN MEMORIA SECONDARIA
+
+        //SI NOTI CHE PRIMA FACEVAMO
+
+        //DocumentBuilder builder = new HTMLTextBuilder(pw);
+       //TextDocumetParser tp = new TextDocumetParser(builder, new File(args[0]).toURI().toURL().toString());
+        //tp.build();  -> il parser si occupava della stampa durante la costruzione
+
 
 
 
