@@ -1,5 +1,7 @@
 package TextDocExample.is.textdoc;
 
+
+//ci permette di iterare su tutti gli elementi compositi.
 public interface CompositeDocumentElement extends DocumentElement,
 		Iterable<DocumentElement> {
 	

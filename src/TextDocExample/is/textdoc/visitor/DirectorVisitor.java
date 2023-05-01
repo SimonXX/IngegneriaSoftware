@@ -18,7 +18,7 @@ public class DirectorVisitor implements TextDocumentVisitor {
 	@Override
 	public void visit(TextDocument d) {
 		builder.openDocument(d.getTitle());
-		for (DocumentElement de : d)
+		for (DocumentElement de : d)//DocumentElement deve essere predisposto al pattern visitor -> da qui l'utilizzo del metodo accept
 			de.accept(this);
 		builder.closeDocument();
 

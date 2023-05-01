@@ -2,7 +2,7 @@ package TextDocExample.is.textdoc;
 
 import TextDocExample.is.textdoc.visitor.TextDocumentVisitor;
 
-public final class Paragraph implements DocumentElement {
+public final class Paragraph implements DocumentElement {//non deve preoccuparsi della gestione dei figli poiché è una foglia
 	private String text;
 
 	public Paragraph() {

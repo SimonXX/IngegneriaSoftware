@@ -1,3 +1,5 @@
+package TextDocExample;
+
 import TextDocExample.is.textdoc.TextDocument;
 import TextDocExample.is.textdoc.builder.TextDocumentBuilder;
 import TextDocExample.is.textdoc.html.HTMLTextBuilder;
@@ -35,7 +37,8 @@ public class Test {
 
 		TextDocumentVisitor visitor = null;
 
-		if (args.length > 1) {
+		if (args.length > 1) {//se inseriamo come argomenti "prova.dat <formato destinazione>"
+			System.out.println("Si");
 			switch (args[1]) {
 				case "native" -> visitor = new NativeTextVisitor(pw);
 				case "txt" -> visitor = new DirectorVisitor(new PlainTextBuilder(pw));//new PlainTextVisitor(pw);

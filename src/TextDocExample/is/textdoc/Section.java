@@ -30,7 +30,7 @@ public final class Section extends AbstractCompositeDocumentElement {
 	@Override
 	public void accept(TextDocumentVisitor visitor) {
 		visitor.visit(this);
-	}
+	}//visitElementA -> il metodo viene specializzato in base ala parametro di input
 
 	@Override
 	public void addChild(DocumentElement el) {

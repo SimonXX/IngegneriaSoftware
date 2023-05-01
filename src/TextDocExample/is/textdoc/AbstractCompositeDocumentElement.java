@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public abstract class AbstractCompositeDocumentElement implements CompositeDocumentElement {
+public abstract class AbstractCompositeDocumentElement implements CompositeDocumentElement {//questa classe verrà estesa solo dagli oggetti composite
+	//Paragraph che non è composite implementerà DocumentElement che non presenta operazioni per la gestione dei figli
 
 	private final  ArrayList<DocumentElement> elements = new ArrayList<>();
 

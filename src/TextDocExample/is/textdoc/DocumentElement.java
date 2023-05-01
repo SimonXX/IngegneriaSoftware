@@ -7,8 +7,8 @@ public interface DocumentElement {
 
 	default CompositeDocumentElement asComposite() {
 		return null;
-	}
+	}//si verifica che l'oggetto sia composite
 
 
-	void accept(TextDocumentVisitor visitor);
+	void accept(TextDocumentVisitor visitor);//per il pattern Visitor
 }
