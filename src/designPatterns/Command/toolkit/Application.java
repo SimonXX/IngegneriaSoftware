@@ -1,10 +1,10 @@
-package designPatterns.Command;
+package designPatterns.Command.toolkit;
 
 
 //Receiver
 
 //Crea una istanza concreta
-public class Application {
+public class Application {//Receiver
 
     private final Menu fileMenu;
     private final Document document;

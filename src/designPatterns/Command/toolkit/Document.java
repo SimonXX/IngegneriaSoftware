@@ -1,12 +1,12 @@
-package designPatterns.Command;
+package designPatterns.Command.toolkit;
 
 
 //Receiver
-public class Document {
+public class Document {//Receiver -> sa come eseguire le operazioni associate alla richiesta
 
     private boolean isOpen;
 
-    public void open() {
+    public void open() {//
         if (!isOpen) {
             isOpen = true;
             System.out.println("Il documento è stato aperto");

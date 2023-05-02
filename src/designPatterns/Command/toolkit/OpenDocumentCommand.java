@@ -1,7 +1,7 @@
-package designPatterns.Command;
+package designPatterns.Command.toolkit;
 
 //ConcreteCommand
-public class OpenDocumentCommand implements Command {
+public class OpenDocumentCommand implements Command {//ConcreteCommand
 
 
     private final Document document;

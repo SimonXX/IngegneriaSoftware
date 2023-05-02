@@ -1,4 +1,4 @@
-package designPatterns.Command;
+package designPatterns.Command.toolkit;
 
 import java.util.ArrayList;
 import java.util.List;

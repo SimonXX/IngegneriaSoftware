@@ -1,6 +1,6 @@
-package designPatterns.Command;
+package designPatterns.Command.toolkit;
 
-public class MenuItem {
+public class MenuItem {//Invoker
     private final String name;
     private final Command command;
 
@@ -15,5 +15,5 @@ public class MenuItem {
 
     public void execute() {
         command.execute();
-    }
+    }//l'invoker richiede all'istanza di command di eseguire l'operazione
 }

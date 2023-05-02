@@ -1,8 +1,8 @@
-package designPatterns.Command;
+package designPatterns.Command.toolkit;
 
 
 //ConcreteCommand
-public class CloseDocumentCommand implements Command{
+public class CloseDocumentCommand implements Command{//ConcreteCommand
     private final Document document;
 
     public CloseDocumentCommand(Document document) {

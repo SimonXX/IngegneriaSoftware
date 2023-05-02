@@ -1,4 +1,4 @@
-package designPatterns.Command;
+package designPatterns.Command.toolkit;
 
 public class Main {
 
