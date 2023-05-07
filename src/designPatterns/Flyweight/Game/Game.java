@@ -11,6 +11,8 @@ public class Game {
         for (int i = 0; i < numParticles; i++) {
             particles[i] = ParticleFactory.getBulletParticle(); // stato intrinseco condiviso
             mps[i] = new MovingParticle(particles[i], i*10, i*10, 1, 1); // stato estrinseco unico
+            //associamo ad ogni oggetto in particles un oggetto in movimento (il riferimento in particles di un oggetto missile farà riferimento allo stesso oggetto in memoria, ma in
+            //MovingParticle avremo stato estrinseco
         }
     }
 
