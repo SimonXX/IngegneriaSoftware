@@ -10,12 +10,12 @@ public class Triangle extends XXXTriangle implements Figure2D {
 
     @Override
     public double area(){
-        return computeArea();
+        return super.computeArea();
     }
 
     @Override
     public double perimeter(){
-        return computePerimeter();
+        return super.computePerimeter();
     }
 
 
