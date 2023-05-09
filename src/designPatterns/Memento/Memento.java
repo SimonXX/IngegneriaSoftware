@@ -1,14 +1,13 @@
 package designPatterns.Memento;
 
 public class Memento {
-    private String state;
+    private final String state;
 
     public Memento(String stateToSave) {
         state = stateToSave;
     }
 
-    // Metodo di accesso allo stato salvato
-    protected String getState() {
+    public String getState() {
         return state;
     }
 }

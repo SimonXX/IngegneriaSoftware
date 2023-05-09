@@ -4,22 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Caretaker {
-    private List<Memento> savedStates = new ArrayList<Memento>();
+    private final Originator originator;
+    private final List<Memento> history = new ArrayList<>();
 
-    // Metodo per memorizzare un Memento
-    public void addMemento(Memento m) {
-        savedStates.add(m);
+    public Caretaker(Originator originator) {
+        this.originator = originator;
     }
 
-    // Metodo per recuperare l'ultimo Memento salvato
-    public Memento getMemento() {
-        if (savedStates.size() > 0) {
-            Memento m = savedStates.get(savedStates.size()-1);
-            savedStates.remove(savedStates.size()-1);
-            return m;
+    public void doSomething() {
+        // Salviamo lo stato corrente dell'originator e lo aggiungiamo alla lista della history
+        Memento m = originator.save();
+        history.add(m);
+    }
+
+    public void undo() {
+        if (history.isEmpty()) {
+            return;
         }
-        else {
-            return null;
-        }
+
+        // Rimuoviamo l'ultimo elemento della history e ripristiniamo lo stato dell'originator a quello corrispondente
+        Memento m = history.remove(history.size() - 1);
+        originator.restore(m);
     }
 }
