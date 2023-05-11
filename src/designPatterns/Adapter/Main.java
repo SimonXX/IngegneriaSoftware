@@ -4,6 +4,7 @@ import designPatterns.Adapter.ObjectAdapter.Triangle;
 
 public class Main {
 
+    //se la classe Adaptee cambia, il Client non sarà influenzato perché continuerà ad utilizzare l'interfaccia standard.
     public static void main(String[] args){
 
         Figure2D figure1 = new Rectangle(3.0, 7.0);
