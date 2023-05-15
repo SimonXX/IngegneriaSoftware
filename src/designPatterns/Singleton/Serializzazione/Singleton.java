@@ -19,6 +19,7 @@ public final class Singleton implements Serializable {
 
 
     //se avesse un nome diverso, non verrebbe invocato e l'hashcode delle istanze risulterebbe, nel main, differente
+
     private Object readResolve() {
         return getInstance();
     }

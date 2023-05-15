@@ -57,7 +57,7 @@ public class ListaCopyOnWrite<E> implements Lista<E> {
 		ref = new ReferenceCounter<E>(l);
 	}
 
-	private ListaCopyOnWrite() {
+	private ListaCopyOnWrite() {//questo costruttore lo usiamo nella copia -> si crea la proxy e si mantiene lo stesso oggetto ReferenceCounter
 	}
 
 	@Override

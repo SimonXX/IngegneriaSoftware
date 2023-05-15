@@ -99,7 +99,7 @@ public abstract class PolinomioAstratto implements Polinomio, Cloneable {
 	 */
 	@Override
 	public Polinomio derive() {
-		Polinomio p = getPrototype().clone();// crea un nuovo polinomio
+		Polinomio p = getPrototype().clone();// crea un nuovo polinomio -> si crea un prototipo e si clona
 		for (Monomio m : this) {
 			int grado = m.getGrado();
 			if (grado > 0) {// se il grado e' positivo calcola la derivata del

@@ -26,7 +26,7 @@ public class PolinomioLL extends PolinomioAstratto {
 
 	@Override
 	protected synchronized PolinomioLL getPrototype() {
-		if (prototype == null)
+		if (prototype == null)//stiamo anche usando il pattern Singleton (versione prototipale)
 			prototype = new PolinomioLL();
 		return prototype;
 	}
