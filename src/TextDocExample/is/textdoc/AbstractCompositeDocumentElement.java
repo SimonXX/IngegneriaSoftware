@@ -34,7 +34,7 @@ public abstract class AbstractCompositeDocumentElement implements CompositeDocum
 	@Override
 	public Iterator<DocumentElement> iterator() {
 		return new InnerIterator();
-	}
+	}//stiamo decorando il nostro iterator
 
 	private class InnerIterator implements Iterator<DocumentElement> {
 		Iterator<DocumentElement> it = elements.iterator();

@@ -48,7 +48,8 @@ public class TestingRiepilogo {
         TextDocumentParser tp2 = new TextDocumentParser(builder2, new File(args[0]).toURI().toURL().toString());
         tp2.build();
 
-        TextDocument doc = builder2.getDocument();
+        TextDocument doc = builder2.getDocument();//la get per ottenere l'oggetto, in accordo con il pattern Builder, non la chiediamo al
+        //parser che rappresenta il director, bensì al builder attraverso il quale è stato costruito
 
         //TERZA PARTE
 
