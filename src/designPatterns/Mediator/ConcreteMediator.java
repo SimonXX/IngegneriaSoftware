@@ -12,11 +12,15 @@ public class ConcreteMediator extends Mediator {
         this.colleague2 = colleague2;
     }
 
+
     @Override
     public void send(String message, Colleague colleague) {
-        if (colleague == colleague1) {
+        //viene invocato questo metodo send, da uno dei colleague, nei cui parametri vi è anche il colleague che lo ha invocato
+
+        if (colleague == colleague1) {//se il colleague1 invoca il metodo, l'azione viene indirizzata a colleague2
             colleague2.receive(message);
-        } else if (colleague == colleague2) {
+
+        } else if (colleague == colleague2) {//viceversa
             colleague1.receive(message);
         }
     }
