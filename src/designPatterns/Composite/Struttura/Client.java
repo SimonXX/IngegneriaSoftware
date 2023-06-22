@@ -3,7 +3,7 @@ package designPatterns.Composite.Struttura;
 public class Client {
     public static void main(String[] args) {
         // Creo un componente composto
-        Composite composite = new Composite();
+        Component composite = new Composite();
 
         // Aggiungo due componenti foglia
         composite.add(new Leaf());
