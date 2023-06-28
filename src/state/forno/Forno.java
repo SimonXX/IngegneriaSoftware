@@ -11,14 +11,15 @@ public class Forno implements FornoIF {
 
 	// gestione dei timer
 	private final ScheduledExecutorService executor = Executors
-			.newSingleThreadScheduledExecutor();
+			.newSingleThreadScheduledExecutor();//le attività programmate verranno eseguite sequenzialmente in un singolo thread, garantendo che non vengano
+			//eseguire in contemporanea
 
 	private ScheduledFuture<?> timerControl;
 
 	private Runnable timeoutTask;
 
 	// definizione interfaccia stato del forno
-	private interface StatoFornoIF {
+	private interface StatoFornoIF {// definisce i metodi per le azioni e le transizioni di stato del forno.
 
 		default void entryAction(Forno f) {
 		}
@@ -39,12 +40,24 @@ public class Forno implements FornoIF {
 		}
 	}
 
+	//i metodi dell'enumaration sono pubblici ma non visibili dall'esterno in quanto l'enumerazione è privata
+	//quindi solo chi ha un'istanza dell'enumerazione può accedervi (non il cliente)
+
 	private static enum StatoForno implements StatoFornoIF {
+		//definisco una classe che si adatta a più categorie di classe di stato
+		//ma bisogna comunque aggiungere caratteristiche specifiche di comportamento
+
+
+		// rappresenta i diversi stati possibili del forno, come "Porta Chiusa", "Porta Aperta", "Inizio Cottura"
+
+
+		//DEFINIAMO SOLO I METODI CHE POSSONO AVVENIRE IN OGNI STATO
+		//se si esegue ad esempio il metodo chiudi in porta chiusa, si esegue un metodo vuoto, perché nella classe dell'enum non è definito
 		PORTA_CHIUSA {
 			@Override
 			public void entryAction(Forno f) {
-				System.out.println("Porta Chiusa");
-				f.luceOff();
+				System.out.println("Porta Chiusa");//si segnala la porta chiusa
+				f.luceOff();//si gestisce la luce
 			}// action
 
 			@Override
@@ -149,25 +162,35 @@ public class Forno implements FornoIF {
 	}
 
 	private final LuceIF luce;
-	private final Tubo tubo;
-	private StatoFornoIF currentState;
+	private final Tubo tubo;//per il Tubo non abbiamo definito interfaccia
+	private StatoFornoIF currentState;//attraverso questa variabile si arriva allo stato appropiato corrente definito nella enum
+	//che invocherà il corretto metodo transition
 	private final Lock lock = new ReentrantLock();
 
 	public Forno(LuceIF luce, Tubo tubo) {
 		this.luce = luce;
 		this.tubo = tubo;
 
-		transition(StatoForno.PORTA_CHIUSA);
+		transition(StatoForno.PORTA_CHIUSA);//inizialmente a priori sappiamo che la porta è chiusa
 	}// Forno
 
-	private final void transition(StatoFornoIF nextState) {
+
+
+	//viene utilizzato al fine di eseguire la transizione tra gli stati del forno
+	private final void transition(StatoFornoIF nextState) {//questo stato next, viene passato dalla classe definita nell'enum, es. il metodo chiudi in cottura interrotta
+		//passera a transition (PORTA_CHIUSA)
+
+		//si gestiscono le esecuzioni delle azioni di uscita e di ingresso associate al cambio di stato
 		if (currentState != null)
-			currentState.exitAction(this);
+			currentState.exitAction(this);//alla prima esecuzione, il currentState sarà null, non si entrerà in questo if
+		//alla prima esecuzione il nextState è Porta_chiusa
 		currentState = nextState;
 		currentState.entryAction(this);
 	}// transition
 
-	void luceOff() {
+
+	//vengono definiti i metodi per le azioni specifiche del forno, che sono chiamati dalle implementazioni degli stati al fine di eseguire le azioni specifiche del forno
+	void luceOff() {//questo metodo viene richiamato dalla classe forno in base allo stato definito nella private enum
 		luce.switchOff();
 
 	}
@@ -187,7 +210,7 @@ public class Forno implements FornoIF {
 
 	}
 
-	void cancelTimer() {
+	void cancelTimer() {//cancella il timer
 		timerControl.cancel(true);
 
 	}
@@ -197,12 +220,17 @@ public class Forno implements FornoIF {
 	 * 
 	 * @see is.state.forno.FornoIF#apri()
 	 */
+
+
+	//abbiamo un problema di concorrenza con gli eventi:
+	//se sto gestendo l'evento di apertura, esso potrebbe andare in conflitto con i thread che gestiscono chiudi e timeout
+	//per tale motivo si usano dei lock: rendiamo atomiche le transizioni di stato
 	@Override
 	public void apri() {
 
 		lock.lock();
 		try {
-			currentState.apri(this);
+			currentState.apri(this);//si richiama il metodo appropriato dello stato corrente del forno
 		} finally {
 			lock.unlock();
 		}
@@ -242,7 +270,8 @@ public class Forno implements FornoIF {
 
 	}
 
-	private void timeout() {
+	//gestisce l'azione di timeout di chiamata quando scade il timer
+	private void timeout() {//non visibile all'utente
 		lock.lock();
 		try {
 			currentState.timeout(this);
@@ -253,6 +282,8 @@ public class Forno implements FornoIF {
 
 	}
 
+
+	//avvia il timer per il forno
 	private void startTimer() {
 
 		if (timeoutTask == null) {
@@ -263,7 +294,8 @@ public class Forno implements FornoIF {
 
 		}
 
-		timerControl = executor.schedule(timeoutTask, 10, TimeUnit.SECONDS);
+		//java ci consente di definire dei task-> schedula l'esecuzione del task del timeout tra 10 secondi: se non c'è un timer lo inserisce in questo modo
+		timerControl = executor.schedule(timeoutTask, 10, TimeUnit.SECONDS);//timerControl contrellerà il timer
 
 	}
 
